@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,7 @@ public class demo {
     public WebDriver driver;
 
     @Test
-    public void login() throws InterruptedException{
+    public void login() throws InterruptedException {
         driver.get("https://www.saucedemo.com/");
         WebElement user = driver.findElement(By.id("user-name"));
         user.sendKeys("standard_user");
@@ -37,34 +38,20 @@ public class demo {
         finish.click();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @BeforeClass
-    public void beforeClass2 (){
-        System.setProperty("webdriver.chrome.driver","drivers\\chromedriver111.exe");
+    public void beforeClass2() {
+        System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver111.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
-
-
-
-
-
-
+    @AfterClass
+    public void afterClas() {
+        driver.quit();
+    }
 
 
 }
